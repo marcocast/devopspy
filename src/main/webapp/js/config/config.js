@@ -1,5 +1,6 @@
-// Set the require.js configuration for your application.
 require.config({
+
+    baseUrl:"./js",
 
     shim: {
         'underscore': {
@@ -33,6 +34,12 @@ require.config({
             ],
             exports: 'Backbone.Paginator'
         },
+        'marionette': {
+            deps: [
+                'backbone'
+            ],
+            exports: 'Marionette'
+        },
         'bootstrap': {
             deps: [
                 'jquery'
@@ -51,12 +58,15 @@ require.config({
         }
     },
 
-    // Libraries
     paths: {
         jquery: 'lib/jquery',
         underscore: 'lib/underscore',
         'underscore-string': 'lib/underscore-string',
         backbone: 'lib/backbone',
+		'backbone.wreqr' : 'lib/backbone.wreqr',
+		'backbone.eventbinder' : 'lib/backbone.eventbinder',
+		'backbone.babysitter' : 'lib/backbone.babysitter',
+        marionette: 'lib/backbone.marionette',
         resthub: 'lib/resthub/resthub',
         localstorage: 'lib/localstorage',
         text: 'lib/text',
@@ -75,11 +85,11 @@ require.config({
         keymaster: 'lib/keymaster',
         hbs: 'lib/resthub/require-handlebars',
         moment: 'lib/moment',
-        template: '../template',
 		json2: 'lib/json2',
         console: 'lib/resthub/console'
     }
 });
 
-// Load our app module and pass it to our definition function
-require(['console', 'app']);
+console.log("new Config");
+
+require(['app', 'init/app-init']);

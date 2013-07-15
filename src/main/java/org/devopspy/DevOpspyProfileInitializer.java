@@ -26,5 +26,13 @@ public class DevOpspyProfileInitializer {
 
 		devOpspyProfile1 = devOpspyProfileRepository.save(devOpspyProfile1);
 
+		DevOpspyProfile devOpspyProfile2 = new DevOpspyProfile(
+				"another profile");
+		devOpspyProfile2.setFilePath("/opt/somewhere");
+		devOpspyProfile2.setHost("/opt/somewhere");
+		devOpspyProfile2.setPassword("password");
+		devOpspyProfile2.setUser("user");
+
+		devOpspyProfile2 = devOpspyProfileRepository.save(devOpspyProfile2);
 	}
 }
