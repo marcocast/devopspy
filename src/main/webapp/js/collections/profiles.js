@@ -8,10 +8,6 @@ define([ 'backbone', 'models/profile' ], function(Backbone, Profile) {
 
 		parse : function(response) {
 			return response.content;
-		},
-
-		updateProfiles : function(){
-			this.sync(this.url);
 		}
 	});
 });
