@@ -1,5 +1,5 @@
-define([ 'marionette', 'hbs!templates/profile-view' ], function(Marionette,
-		profileViewTemplate) {
+define([ 'marionette', 'models/profile', 'hbs!templates/profile-view' ], function(Marionette,
+		Profile, profileViewTemplate) {
 
 	console.log("new ProfileView");
 
@@ -19,7 +19,7 @@ define([ 'marionette', 'hbs!templates/profile-view' ], function(Marionette,
 
 		deleteProfile : function() {
 			this.model.destroy({success: function(model, response) {
-				  alert("destroyed!");
+				  alert("profile destroyed!" + model.id);
 			}});
 		}
 	});

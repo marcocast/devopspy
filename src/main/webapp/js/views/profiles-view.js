@@ -1,6 +1,6 @@
-define([ 'marionette', 'views/profile-view',
+define([ 'marionette', 'models/profile', 'collections/profiles', 'views/profile-view',
 		'hbs!templates/profiles-view' ], function(Marionette,
-		ProfileView, profilesCollectionViewTemplate) {
+		Profile, Profiles, ProfileView, profilesCollectionViewTemplate) {
 
 	console.log("new ProfilesCollectionView");
 
@@ -13,5 +13,31 @@ define([ 'marionette', 'views/profile-view',
 		itemViewContainer : 'ol',
 
 		id : 'profiles-collection',
+
+		events : {
+			'click a.btn' : 'createProfile'
+		},
+
+		ui : {
+			newProfileName : 'input#new-profile-name',
+			newProfileUser : 'input#new-profile-user',
+			newProfilePassword : 'input#new-profile-password',
+			newProfileHost : 'input#new-profile-host',
+			newProfileFilePath : 'input#new-profile-file-path',
+		},
+
+		createProfile : function(){
+
+			var newProfile = new Profile({
+				name : this.ui.newProfileName.val(),
+				filePath : this.ui.newProfileFilePath.val(),
+				user : this.ui.newProfileUser.val(),
+				password : this.ui.newProfilePassword.val(),
+				host : this.ui.newProfileHost.val()
+			});
+
+			newProfile.save();
+			this.collection.fetch();
+		}
 	});
 });
