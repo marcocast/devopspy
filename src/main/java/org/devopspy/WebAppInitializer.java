@@ -32,5 +32,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("h2console", WebServlet.class);
         h2Servlet.setLoadOnStartup(2);
         h2Servlet.addMapping("/console/database/*");
+        
     }
 }
