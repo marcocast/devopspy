@@ -90,6 +90,4 @@ require.config({
     }
 });
 
-console.log("new Config");
-
 require(['app', 'init/app-init']);

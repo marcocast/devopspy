@@ -3,8 +3,6 @@ define([ 'marionette', 'collections/profiles',
 		'hbs!templates/main-view' ], function(Marionette, Profiles,
 		ProfilesView, HomeView, mainViewTemplate) {
 
-	console.log("new MainView");
-
 	return Backbone.Marionette.Layout.extend({
 
 		template : mainViewTemplate,
@@ -15,7 +13,6 @@ define([ 'marionette', 'collections/profiles',
 		},
 
 		initialize : function() {
-			console.log('MainView:initialize');
 
 			this.profiles = new Profiles();
 			this.profiles.fetch();
@@ -27,8 +24,6 @@ define([ 'marionette', 'collections/profiles',
 		},
 
 		onRender : function() {
-			console.log('MainView:onRender');
-
 			this.sidebarRegion.show(this.profilesView);
 			this.mainRegion.show(this.homeView);
 		}
