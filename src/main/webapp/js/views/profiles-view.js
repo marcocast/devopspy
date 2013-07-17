@@ -2,8 +2,6 @@ define([ 'marionette', 'models/profile', 'collections/profiles', 'views/profile-
 		'hbs!templates/profiles-view' ], function(Marionette,
 		Profile, Profiles, ProfileView, profilesCollectionViewTemplate) {
 
-	console.log("new ProfilesCollectionView");
-
 	return Backbone.Marionette.CompositeView.extend({
 
 		template : profilesCollectionViewTemplate,

@@ -1,7 +1,5 @@
 define([ 'backbone', 'marionette' ], function(Backbone, Marionette) {
 
-	console.log("new App");
-
 	var App = new Backbone.Marionette.Application();
 
 	App.addRegions({
