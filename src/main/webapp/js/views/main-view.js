@@ -3,6 +3,8 @@ define([ 'marionette', 'collections/profiles',
 		'hbs!templates/main-view' ], function(Marionette, Profiles,
 		ProfilesView, HomeView, mainViewTemplate) {
 
+	'use strict';
+
 	return Backbone.Marionette.Layout.extend({
 
 		template : mainViewTemplate,

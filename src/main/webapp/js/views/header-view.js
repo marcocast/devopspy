@@ -1,9 +1,15 @@
-define([ 'marionette', 'hbs!templates/header-view' ], function(Marionette,
-		headerViewTemplate) {
+define([ 'marionette', 'views/header-option-view', 'hbs!templates/header-view' ], function(Marionette, HeaderOption, headerViewTemplate) {
+	
+	'use strict';
 
-	return Backbone.Marionette.ItemView.extend({
+	return Backbone.Marionette.CompositeView.extend({
 
-		template : headerViewTemplate
+		tagName : 'div',
+		
+		itemViewContainer : 'ul',
 
+		template : headerViewTemplate,
+		
+		itemView : HeaderOption,
 	});
 });

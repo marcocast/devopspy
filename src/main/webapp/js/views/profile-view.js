@@ -1,6 +1,8 @@
 define([ 'marionette', 'models/profile', 'hbs!templates/profile-view' ], function(Marionette,
 		Profile, profileViewTemplate) {
 
+	'use strict';
+
 	return Backbone.Marionette.ItemView.extend({
 
 		tagName : 'li',
