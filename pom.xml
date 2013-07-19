@@ -80,7 +80,7 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -92,6 +92,12 @@
 			<artifactId>resthub-test</artifactId>
 			<version>${resthub.spring.stack.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.grep4j</groupId>
+			<artifactId>grep4j</artifactId>
+			<version>1.8.5</version>
 		</dependency>
 
 	</dependencies>

@@ -3,8 +3,10 @@ package org.devopspy;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.devopspy.model.DevOpspyGrep;
 import org.devopspy.model.DevOpspyProfile;
 import org.devopspy.model.DevOpspyProfileGroup;
+import org.devopspy.repository.DevOpspyGrepRepository;
 import org.devopspy.repository.DevOpspyProfileGroupRepository;
 import org.devopspy.repository.DevOpspyProfileRepository;
 import org.resthub.common.util.PostInitialize;
@@ -16,6 +18,10 @@ public class DevOpspyProfileInitializer {
 	@Inject
 	@Named("devOpspyProfileRepository")
 	private DevOpspyProfileRepository devOpspyProfileRepository;
+	
+	@Inject
+	@Named("devOpspyGrepRepository")
+	private DevOpspyGrepRepository devOpspyGrepRepository;
 
 	@Inject
 	@Named("devOpspyProfileGroupRepository")
@@ -32,11 +38,18 @@ public class DevOpspyProfileInitializer {
 		devOpspyProfile1.setDevOpspyProfileGroup(firstGroup);
 		devOpspyProfileRepository.save(devOpspyProfile1);
 
-		DevOpspyProfile devOpspyProfile2 = createProfile("profile 2", "/opt/somewhere", "host2", "user", "password");
+		DevOpspyProfile devOpspyProfile2 = createProfile("profile 2", "/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
 		devOpspyProfileRepository.save(devOpspyProfile2);
 
-		DevOpspyProfile devOpspyProfile3 = createProfile("profile 3", "/opt/somewhere", "host3", "user", null, "/home/user/.ssh/id_dsa");
+		DevOpspyProfile devOpspyProfile3 = createProfile("profile 3", "/opt/ops/logs/jboss/serv", "host3", "user", null, "/home/user/.ssh/id_dsa");
 		devOpspyProfileRepository.save(devOpspyProfile3);
+		
+		
+		DevOpspyGrep devOpspyGrep = new DevOpspyGrep();
+		devOpspyGrep.setDevOpspyProfile(devOpspyProfile2);
+		devOpspyGrep.setExpression("ERROR");
+		devOpspyGrep.setRegex(false);
+		devOpspyGrepRepository.save(devOpspyGrep);
 	}
 
 	private DevOpspyProfile createProfile(String name, String filePath, String url, String passsword, String user) {
