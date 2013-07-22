@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/search")
+@RequestMapping(value = "/")
 public class GrepController {
 
 	@Inject
@@ -28,8 +28,8 @@ public class GrepController {
 		return grepService.runGrep(devOpspyGrep);
 
 	}
-	
-	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)
+
+	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)	
 	@ResponseBody
 	public DevOpspyResult executeGrepSearch(@PathVariable Long grepid) {
 		return grepService.runGrep(grepid);
