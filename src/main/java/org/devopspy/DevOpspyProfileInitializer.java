@@ -35,7 +35,7 @@ public class DevOpspyProfileInitializer {
 		devOpspyProfileGroupRepository.save(firstGroup);
 
 		DevOpspyProfile devOpspyProfile1 = createProfile("profile 1", "/opt/somewhere", "host1", "user", "password");
-		devOpspyProfile1.setDevOpspyProfileGroup(firstGroup);
+		devOpspyProfile1.addDevOpspyProfileGroup(firstGroup);
 		devOpspyProfileRepository.save(devOpspyProfile1);
 
 		DevOpspyProfile devOpspyProfile2 = createProfile("profile 2", "/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
@@ -46,7 +46,7 @@ public class DevOpspyProfileInitializer {
 		
 		
 		DevOpspyGrep devOpspyGrep = new DevOpspyGrep();
-		devOpspyGrep.setDevOpspyProfile(devOpspyProfile2);
+		devOpspyGrep.addDevOpspyProfile(devOpspyProfile2);
 		devOpspyGrep.setExpression("ERROR");
 		devOpspyGrep.setRegex(false);
 		devOpspyGrepRepository.save(devOpspyGrep);

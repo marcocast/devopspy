@@ -1,22 +1,35 @@
 package org.devopspy.model;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "DEVOPSPY_PROFILE")
 public class DevOpspyProfile {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "DEVOPSPY_PROFILE_ID")
 	private Long id;
 	
 	@NotNull
@@ -28,8 +41,16 @@ public class DevOpspyProfile {
 	private String password;
 	private String userAuthPrivateKeyLocation;
 	
-	@ManyToOne
-	private DevOpspyProfileGroup devOpspyProfileGroup;
+	@OneToMany(cascade = CascadeType.ALL, fetch= FetchType.EAGER)	
+	@JoinTable(name = "DEVOPSPY_PROFILE_GROUP", joinColumns = { @JoinColumn(name = "DEVOPSPY_PROFILE_ID") }, inverseJoinColumns = { @JoinColumn(name = "DEVOPSPY_GROUP_ID") })	
+	private Set<DevOpspyProfileGroup> devOpspyProfileGroups = new HashSet<DevOpspyProfileGroup>();
+
+	public void addDevOpspyProfileGroup(DevOpspyProfileGroup devOpspyProfileGroup) {
+		if (devOpspyProfileGroups == null) {
+			devOpspyProfileGroups = new HashSet<DevOpspyProfileGroup>();
+		}
+		devOpspyProfileGroups.add(devOpspyProfileGroup);
+	}
 	
 	public DevOpspyProfile() {
 		super();
