@@ -1,7 +1,11 @@
 package org.devopspy.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.devopspy.model.DosGrep;
 import org.devopspy.model.DosResult;
@@ -23,13 +27,15 @@ public class GrepServiceController {
 
 	@RequestMapping(value = "grep", method = RequestMethod.POST)
 	@ResponseBody
-	public DosResult executeGrepSearch(@RequestBody DosGrep devOpspyGrep) {
+	@Produces(MediaType.TEXT_PLAIN)
+	public List<DosResult> executeGrepSearch(@RequestBody DosGrep devOpspyGrep) {
 		return grepService.runGrep(devOpspyGrep);
 	}
 
 	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)
 	@ResponseBody
-	public DosResult executeGrepSearch(@PathVariable Long grepid) {
+	@Produces(MediaType.TEXT_PLAIN)
+	public List<DosResult> executeGrepSearch(@PathVariable Long grepid) {
 		return grepService.runGrep(grepid);
 	}
 

@@ -10,29 +10,31 @@ import org.devopspy.model.DosProfile;
 import org.grep4j.core.model.Profile;
 import org.grep4j.core.model.ProfileBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Service
 @Named("profileService")
 public class ProfileService {
 
 	public List<Profile> generateProfiles(DosGrep devOpspyGrep) {
-		List<Profile> profiles = null;
+		List<Profile> profiles = new ArrayList<Profile>();
 
 		for (DosProfile devOpspyProfile : devOpspyGrep.getDosProfiles()) {
-			if (devOpspyProfile.getHost().equalsIgnoreCase("localhost")) {
-				Profile profileNew = ProfileBuilder.newBuilder().name(devOpspyProfile.getName()).filePath(devOpspyProfile.getFilePath())
-						.onLocalhost().build();
-				profiles = new ArrayList<Profile>();
-				profiles.add(profileNew);
-			}else{
-				Profile profileNew = ProfileBuilder.newBuilder().name(devOpspyProfile.getName()).filePath(devOpspyProfile.getFilePath())
-						.onRemotehost(devOpspyProfile.getHost()).credentials(devOpspyProfile.getUser(), devOpspyProfile.getPassword()).build();
-				profiles = new ArrayList<Profile>();
-				profiles.add(profileNew);
-			}
+			profiles.add(createProfile(devOpspyProfile));
 		}
-
 		return profiles;
+	}
 
+	private Profile createProfile(DosProfile devOpspyProfile) {
+		Profile profile = null;
+		if (devOpspyProfile.getHost().equalsIgnoreCase("localhost")) {
+			profile = ProfileBuilder.newBuilder().name(devOpspyProfile.getName()).filePath(devOpspyProfile.getFilePath()).onLocalhost().build();
+
+		} else {
+			profile = ProfileBuilder.newBuilder().name(devOpspyProfile.getName()).filePath(devOpspyProfile.getFilePath())
+					.onRemotehost(devOpspyProfile.getHost()).credentials(devOpspyProfile.getUser(), devOpspyProfile.getPassword()).build();
+		}
+		return profile;
 	}
 }

@@ -22,9 +22,8 @@ public class DosResult {
 	
 	@Transient
 	private String result;
-	
-	@OneToOne
-	private DosGrep dosGrep;
+		
+	private String profileName;
 	
 	private Date executionDate;
 	

@@ -30,13 +30,12 @@ public class DosGrep {
 	private String expression;
 	private boolean isRegex;
 
+	@NotNull
+	@NotEmpty
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<DosProfile> dosProfiles = new HashSet<DosProfile>();
 
-	public void addDosProfile(DosProfile dosProfile) {
-		if (dosProfiles == null) {
-			dosProfiles = new HashSet<DosProfile>();
-		}
+	public void addDosProfile(DosProfile dosProfile) {		
 		dosProfiles.add(dosProfile);
 	}
 
