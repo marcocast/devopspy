@@ -3,21 +3,21 @@ package org.devopspy.controller;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DevOpspyProfile;
-import org.devopspy.repository.DevOpspyProfileRepository;
+import org.devopspy.model.DosProfile;
+import org.devopspy.repository.DosProfileRepository;
 import org.resthub.web.controller.RepositoryBasedRestController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/api/devopspyprofile")
-public class DevOpspyProfileController extends
-		RepositoryBasedRestController<DevOpspyProfile, Long, DevOpspyProfileRepository> {
+public class ProfileDAOController extends
+		RepositoryBasedRestController<DosProfile, Long, DosProfileRepository> {
 
 	@Inject
-	@Named("devOpspyProfileRepository")
+	@Named("dosProfileRepository")
 	@Override
-	public void setRepository(DevOpspyProfileRepository repository) {
+	public void setRepository(DosProfileRepository repository) {
 		this.repository = repository;
 	}
 

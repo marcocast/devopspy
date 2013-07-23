@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import org.devopspy.model.DevOpspyGrep;
-import org.devopspy.model.DevOpspyProfile;
+import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosProfile;
 import org.grep4j.core.model.Profile;
 import org.grep4j.core.model.ProfileBuilder;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 @Named("profileService")
 public class ProfileService {
 
-	public List<Profile> generateProfiles(DevOpspyGrep devOpspyGrep) {
+	public List<Profile> generateProfiles(DosGrep devOpspyGrep) {
 		List<Profile> profiles = null;
 
-		for (DevOpspyProfile devOpspyProfile : devOpspyGrep.getDevOpspyProfiles()) {
+		for (DosProfile devOpspyProfile : devOpspyGrep.getDosProfiles()) {
 			if (devOpspyProfile.getHost().equalsIgnoreCase("localhost")) {
 				Profile profileNew = ProfileBuilder.newBuilder().name(devOpspyProfile.getName()).filePath(devOpspyProfile.getFilePath())
 						.onLocalhost().build();

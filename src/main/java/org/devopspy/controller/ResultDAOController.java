@@ -3,21 +3,21 @@ package org.devopspy.controller;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DevOpspyResult;
-import org.devopspy.repository.DevOpspyResultRepository;
+import org.devopspy.model.DosResult;
+import org.devopspy.repository.DosResultRepository;
 import org.resthub.web.controller.RepositoryBasedRestController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/api/devopspyresult")
-public class DevOpspyResultController extends
-		RepositoryBasedRestController<DevOpspyResult, Long, DevOpspyResultRepository> {
+public class ResultDAOController extends
+		RepositoryBasedRestController<DosResult, Long, DosResultRepository> {
 
 	@Inject
-	@Named("devOpspyResultRepository")
+	@Named("dosResultRepository")
 	@Override
-	public void setRepository(DevOpspyResultRepository repository) {
+	public void setRepository(DosResultRepository repository) {
 		this.repository = repository;
 	}
 

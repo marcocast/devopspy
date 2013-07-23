@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class DevOpspyResult {
+public class DosResult {
 	
 	@Id
 	@GeneratedValue
@@ -24,13 +24,13 @@ public class DevOpspyResult {
 	private String result;
 	
 	@OneToOne
-	private DevOpspyGrep devOpspyGrep;
+	private DosGrep dosGrep;
 	
 	private Date executionDate;
 	
 	private Integer totOccourences;
 		
-	public DevOpspyResult() {
+	public DosResult() {
 		super();
 	}
 	

@@ -24,12 +24,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
-@Table(name = "DEVOPSPY_PROFILE")
-public class DevOpspyProfile {
+@Table(name = "DOS_PROFILE")
+public class DosProfile {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "DEVOPSPY_PROFILE_ID")
+	@Column(name = "DOS_PROFILE_ID")
 	private Long id;
 	
 	@NotNull
@@ -42,21 +42,21 @@ public class DevOpspyProfile {
 	private String userAuthPrivateKeyLocation;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch= FetchType.EAGER)	
-	@JoinTable(name = "DEVOPSPY_PROFILE_GROUP", joinColumns = { @JoinColumn(name = "DEVOPSPY_PROFILE_ID") }, inverseJoinColumns = { @JoinColumn(name = "DEVOPSPY_GROUP_ID") })	
-	private Set<DevOpspyProfileGroup> devOpspyProfileGroups = new HashSet<DevOpspyProfileGroup>();
+	@JoinTable(name = "DOS_PROFILE_GROUP", joinColumns = { @JoinColumn(name = "DOS_PROFILE_ID") }, inverseJoinColumns = { @JoinColumn(name = "DOS_GROUP_ID") })	
+	private Set<DosProfileGroup> dosProfileGroups = new HashSet<DosProfileGroup>();
 
-	public void addDevOpspyProfileGroup(DevOpspyProfileGroup devOpspyProfileGroup) {
-		if (devOpspyProfileGroups == null) {
-			devOpspyProfileGroups = new HashSet<DevOpspyProfileGroup>();
+	public void addDosProfileGroup(DosProfileGroup dosProfileGroup) {
+		if (dosProfileGroups == null) {
+			dosProfileGroups = new HashSet<DosProfileGroup>();
 		}
-		devOpspyProfileGroups.add(devOpspyProfileGroup);
+		dosProfileGroups.add(dosProfileGroup);
 	}
 	
-	public DevOpspyProfile() {
+	public DosProfile() {
 		super();
 	}
 	
-	public DevOpspyProfile(String name) {
+	public DosProfile(String name) {
 		super();
 		this.name = name;
 	}	

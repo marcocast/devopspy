@@ -10,10 +10,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DevOpspyGrep;
-import org.devopspy.model.DevOpspyResult;
-import org.devopspy.repository.DevOpspyGrepRepository;
-import org.devopspy.repository.DevOpspyResultRepository;
+import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosResult;
+import org.devopspy.repository.DosGrepRepository;
+import org.devopspy.repository.DosResultRepository;
 import org.grep4j.core.model.Profile;
 import org.grep4j.core.result.GrepResults;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,28 +29,28 @@ public class GrepService {
 	private ProfileService profileService;
 	
 	@Inject
-	@Named("devOpspyGrepRepository")
-	private DevOpspyGrepRepository devOpspyGrepRepository;
+	@Named("dosGrepRepository")
+	private DosGrepRepository dosGrepRepository;
 	
 	@Inject
-	@Named("devOpspyResultRepository")
-	private DevOpspyResultRepository devOpspyResultRepository;
+	@Named("dosResultRepository")
+	private DosResultRepository dosResultRepository;
 	
 	
-	public DevOpspyResult runGrep(DevOpspyGrep devOpspyGrep){
-		List<Profile> profiles = profileService.generateProfiles(devOpspyGrep);		
-		GrepResults results = grep(constantExpression(devOpspyGrep.getExpression()), on(profiles));
-		DevOpspyResult devOpspyResult = new DevOpspyResult();
-		devOpspyResult.setResult(results.toString());
-		devOpspyResult.setDevOpspyGrep(devOpspyGrep);
-		devOpspyResult.setExecutionDate(new Date());
-		devOpspyResult.setTotOccourences(results.totalLines());
-		devOpspyResultRepository.save(devOpspyResult);
-		return devOpspyResult;
+	public DosResult runGrep(DosGrep dosGrep){
+		List<Profile> profiles = profileService.generateProfiles(dosGrep);		
+		GrepResults results = grep(constantExpression(dosGrep.getExpression()), on(profiles));
+		DosResult dosResult = new DosResult();
+		dosResult.setResult(results.toString());
+		dosResult.setDosGrep(dosGrep);
+		dosResult.setExecutionDate(new Date());
+		dosResult.setTotOccourences(results.totalLines());
+		dosResultRepository.save(dosResult);
+		return dosResult;
 	}
 	
-	public DevOpspyResult runGrep(Long grepid){		
-		return runGrep(devOpspyGrepRepository.findOne(grepid));		
+	public DosResult runGrep(Long grepid){		
+		return runGrep(dosGrepRepository.findOne(grepid));		
 	}
 	
 	

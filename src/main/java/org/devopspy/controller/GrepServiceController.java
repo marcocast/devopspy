@@ -3,8 +3,8 @@ package org.devopspy.controller;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DevOpspyGrep;
-import org.devopspy.model.DevOpspyResult;
+import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosResult;
 import org.devopspy.service.GrepService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/")
-public class GrepController {
+public class GrepServiceController {
 
 	@Inject
 	@Named("grepService")
@@ -23,15 +23,13 @@ public class GrepController {
 
 	@RequestMapping(value = "grep", method = RequestMethod.POST)
 	@ResponseBody
-	public DevOpspyResult executeGrepSearch(@RequestBody DevOpspyGrep devOpspyGrep) {
-
+	public DosResult executeGrepSearch(@RequestBody DosGrep devOpspyGrep) {
 		return grepService.runGrep(devOpspyGrep);
-
 	}
 
-	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)	
+	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)
 	@ResponseBody
-	public DevOpspyResult executeGrepSearch(@PathVariable Long grepid) {
+	public DosResult executeGrepSearch(@PathVariable Long grepid) {
 		return grepService.runGrep(grepid);
 	}
 

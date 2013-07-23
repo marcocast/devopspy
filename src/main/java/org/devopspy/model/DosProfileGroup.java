@@ -16,23 +16,23 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
-@Table(name = "DEVOPSPY_GROUP")
-public class DevOpspyProfileGroup {
+@Table(name = "DOS_GROUP")
+public class DosProfileGroup {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "DEVOPSPY_GROUP_ID")
+	@Column(name = "DOS_GROUP_ID")
 	private Long id;
 	
 	@NotNull
     @NotEmpty
 	private String name;
 	
-	public DevOpspyProfileGroup() {
+	public DosProfileGroup() {
 		super();
 	}
 	
-	public DevOpspyProfileGroup(String name) {
+	public DosProfileGroup(String name) {
 		super();
 		this.name = name;
 	}	

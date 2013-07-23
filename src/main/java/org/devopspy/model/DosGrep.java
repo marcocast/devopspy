@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
-public class DevOpspyGrep {
+public class DosGrep {
 
 	@Id
 	@GeneratedValue
@@ -31,16 +31,16 @@ public class DevOpspyGrep {
 	private boolean isRegex;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<DevOpspyProfile> devOpspyProfiles = new HashSet<DevOpspyProfile>();
+	private Set<DosProfile> dosProfiles = new HashSet<DosProfile>();
 
-	public void addDevOpspyProfile(DevOpspyProfile devOpspyProfile) {
-		if (devOpspyProfiles == null) {
-			devOpspyProfiles = new HashSet<DevOpspyProfile>();
+	public void addDosProfile(DosProfile dosProfile) {
+		if (dosProfiles == null) {
+			dosProfiles = new HashSet<DosProfile>();
 		}
-		devOpspyProfiles.add(devOpspyProfile);
+		dosProfiles.add(dosProfile);
 	}
 
-	public DevOpspyGrep() {
+	public DosGrep() {
 		super();
 	}
 
