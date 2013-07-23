@@ -1,11 +1,12 @@
 package org.devopspy;
 
+import static org.mockito.Mockito.mock;
+
 import org.devopspy.notificators.NotificationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
-import static org.mockito.Mockito.mock;
 
 @Configuration
 @ImportResource({"classpath*:resthubContext.xml", "classpath*:applicationContext.xml"})

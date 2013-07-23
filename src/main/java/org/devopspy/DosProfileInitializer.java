@@ -44,7 +44,7 @@ public class DosProfileInitializer {
 		DosProfile dosProfile3 = createProfile("profile 3", "/opt/ops/logs/jboss/serv", "host3", "user", null, "/home/user/.ssh/id_dsa");
 		dosProfileRepository.save(dosProfile3);
 		
-		DosProfile dosProfile4 = createProfile("profile 4", "/opt/ops/logs/jboss/ramp-gui/server.log", "dubdc2-sys3jeerampsetup-01.unix.paddypower.com", "N9HE_aal", "mcastigliego");
+		DosProfile dosProfile4 = createProfile("profile 4", "/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
 		dosProfileRepository.save(dosProfile4);              
 		
 		
