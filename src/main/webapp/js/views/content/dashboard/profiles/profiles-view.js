@@ -1,4 +1,4 @@
-define([ 'marionette', 'models/profile', 'collections/profiles', 'views/profile-view', 'hbs!templates/profiles-view' ],
+define([ 'marionette', 'models/profile', 'collections/profiles', 'views/content/dashboard/profiles/profile-view', 'hbs!templates/content/dashboard/profiles/profiles-view' ],
 	function(Marionette,Profile, Profiles, ProfileView, profilesCollectionViewTemplate) {
 
 		'use strict';

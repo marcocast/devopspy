@@ -4,7 +4,8 @@ define([ 'backbone', 'marionette' ], function(Backbone, Marionette) {
 
 	App.addRegions({
 		headerRegion : "#header",
-		mainRegion : "#main"
+		sideNavRegion : "#side-nav",
+		mainRegion : "#main-home"
 	});
 
 	App.addInitializer(function() {

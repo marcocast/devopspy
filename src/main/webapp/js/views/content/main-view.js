@@ -1,5 +1,5 @@
 define([ 'marionette', 'collections/profiles',
-		'views/profiles-view', 'views/home-view',
+		'views/content/dashboard/profiles/profiles-view', 'views/content/dashboard/dashboard-view',
 		'hbs!templates/main-view' ], function(Marionette, Profiles,
 		ProfilesView, HomeView, mainViewTemplate) {
 

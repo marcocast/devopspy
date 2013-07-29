@@ -8,6 +8,8 @@ define([ 'backbone' ], function(Backbone) {
 			title : "",
 			target : "",
 			active : false
-		}
+		},
+		
+		idAttribute: "target"
 	});
 });
