@@ -23,11 +23,17 @@
 	margin-top: 0px;
 }
 
+#side-nav>ul>li {
+	width: 250px;
+}
+
 #side-nav>ul>li>a {
+	background-color: rgb(255, 255, 255);
 	display: block;
 	margin: 0 0 -1px;
 	padding: 8px 14px 8px 14px;
 	border: 1px solid #e5e5e5;
+	width: 220px;
 }
 
 #side-nav>ul>li>a>i:first-of-type {
@@ -46,12 +52,13 @@
 	border-radius: 0 0 6px 6px;
 }
 
-#side-nav>ul>.active>a {
+#side-nav>ul>li.active>a {
 	position: relative;
 	z-index: 2;
 	padding: 9px 15px;
 	border: 0;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+	background-color: #0088cc;
 	-webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1), inset -1px 0 0
 		rgba(0, 0, 0, .1);
 	-moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1), inset -1px 0 0
