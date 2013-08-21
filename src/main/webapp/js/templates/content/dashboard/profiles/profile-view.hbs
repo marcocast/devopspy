@@ -1,1 +1,22 @@
-<strong>{{ name }}</strong><br /><i>{{ user }} : {{ password }} @ {{ host }} : {{ filePath }}</i> <a class="delete-profile">X</a>
+<td class="profile-id"><span data-toggle="tooltip" title="{{ id }}">{{ id }}</span></td>
+<td class="profile-name"><span data-toggle="tooltip" title="{{ name }}">{{ name }}</span></td>
+<td class="profile-groups">
+	<span class="badge" data-toggle="tooltip" title="{{ dosProfileGroups.length }} Groups">{{ dosProfileGroups.length }}</span>
+	{{#each dosProfileGroups}}
+		<span class="label"  data-toggle="tooltip" title="{{ name }}">{{name}}</span>
+	{{/each}}
+</td>
+<td class="profile-user"><span data-toggle="tooltip" title="{{ user }}">{{ user }}</span></td>
+<td class="profile-host"><span data-toggle="tooltip" title="{{ host }}">{{ host }}</span></td>
+<td class="profile-path"><span data-toggle="tooltip" title="{{ filePath }}">{{ filePath }}</td>
+<td class="profile-private-key"><span data-toggle="tooltip" title="{{ userAuthPrivateKeyLocation }}">{{ userAuthPrivateKeyLocation }}</span></td>
+<td class="profile-delete profile-edit">
+	<div class="btn-group">
+		<button type="button" class="delete-profile btn btn-mini" data-toggle="tooltip" title="Delete Profile">
+			<i class="delete-profile icon-remove"></i>
+		</button>
+		<button type="button" class="edit-profile btn btn-mini"  data-toggle="tooltip" title="Edit Profile">
+			<i class="edit-profile icon-edit"></i>
+		</button>
+	</div>
+</td>

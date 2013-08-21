@@ -5,10 +5,10 @@ define([ 'models/nav-option' ], function(NavOption) {
 	return [ new NavOption({
 		title : "Account",
 		target : "#settings/account",
-		icon : "icon-search"
+		icon : "icon-briefcase"
 	}), new NavOption({
 		title : "Users",
 		target : "#settings/users",
-		icon : "icon-signal"
+		icon : "icon-user"
 	})  ];
 });

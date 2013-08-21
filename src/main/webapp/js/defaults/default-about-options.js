@@ -5,9 +5,10 @@ define([ 'models/nav-option' ], function(NavOption) {
 	return [ new NavOption({
 		title : "About DevOpSpy",
 		target : "#about/devopspy",
-		icon : "icon-search"
+		icon : "icon-question-sign"
 	}), new NavOption({
 		title : "Licence",
-		target : "#about/licence"
+		target : "#about/licence",
+		icon : " icon-book"
 	}) ];
 });

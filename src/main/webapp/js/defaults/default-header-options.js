@@ -6,14 +6,14 @@ define(['models/nav-option' ],
 		return [ new NavOption({
 			title : "Dashboard",
 			target : "#dashboard",
-			icon : "icon-search"
+			icon : "icon-home"
 		}), new NavOption({
 			title : "Settings",
 			target : "#settings",
-			icon : "icon-signal"
+			icon : "icon-wrench"
 		}), new NavOption({
 			title : "About",
 			target : "#about",
-			icon : "icon-globe"
+			icon : " icon-question-sign"
 		})  ];
 	});

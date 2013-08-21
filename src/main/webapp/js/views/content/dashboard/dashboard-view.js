@@ -1,10 +1,10 @@
-define([ 'marionette', 'hbs!templates/content/dashboard/dashboard-view' ], function(Marionette,
-		homeViewTemplate) {
+define([ 'marionette', 'hbs!templates/content/content-view' ], function(Marionette,
+		dashboardViewTemplate) {
 	
 	'use strict';
 
 	return Backbone.Marionette.ItemView.extend({
 
-		template : homeViewTemplate,
+		template : dashboardViewTemplate,
 	});
 });

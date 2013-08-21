@@ -1,20 +1,14 @@
-define([ 'models/group', 'collections/groups', 'backbone' ], function(Group, Groups) {
+define([ 'models/profile', 'collections/profiles', 'backbone' ], function(Profile, Profiles) {
 	
 	'use strict';
 
 	return Backbone.Model.extend({
 
 		defaults : {
-			name : 'New Profile',
-			filePath : null,
-			host : null,
-			user : null,
-			password : null,
-			userAuthPrivateKeyLocation : null,
-			dosProfileGroups : null
+			name : "New Group",
 		},
-
-		urlRoot : 'api/devopspyprofile',
+		
+		urlRoot : 'api/devopspyprofilegroup',
 
 		methodUrl : function (method){
 			if (method == 'create'){

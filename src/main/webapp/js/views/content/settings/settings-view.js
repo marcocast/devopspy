@@ -1,11 +1,10 @@
 define([ 'marionette', 'hbs!templates/content/content-view' ], function(Marionette,
-		aboutViewTemplate) {
+		settingsViewTemplate) {
 	
 	'use strict';
 
-	return Backbone.Marionette.Layout.extend({
+	return Backbone.Marionette.ItemView.extend({
 
-		template : aboutViewTemplate,
-		
+		template : settingsViewTemplate,
 	});
 });

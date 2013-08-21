@@ -8,7 +8,16 @@ define([ 'app',
 		'views/header/header-view',
 		'views/side-nav/side-nav-view',
 		'views/content/dashboard/dashboard-view',
-		'views/content/about/about-view',
+		'views/content/dashboard/search/dashboard-search-view',
+		'views/content/dashboard/graphs/dashboard-graphs-view',
+		'views/content/dashboard/statistics/dashboard-statistics-view',
+		'views/content/dashboard/components/dashboard-components-view',
+		'views/content/dashboard/scheduler/dashboard-scheduler-view',
+		'views/content/dashboard/profiles/dashboard-profiles-view',
+		'views/content/settings/account/settings-account-view',
+		'views/content/settings/users/settings-users-view',
+		'views/content/about/devopspy/about-devopspy-view',
+		'views/content/about/licence/about-licence-view',
 		'views/content/main-view'
 	], function(App, 
 		Marionette,
@@ -20,7 +29,16 @@ define([ 'app',
 		HeaderView,
 		SideNavView,
 		HomeView,
-		AboutView,
+		DashboardSearchView,
+		DashboardGraphsView,
+		DashboardStatisticsView,
+		DashboardComponentsView,
+		DashboardSchedulerView,
+		DashboardProfilesView,
+		SettingsAccountView,
+		SettingsUsersView,
+		AboutDevopspyView,
+		AboutLicenceView,
 		MainView) {
 
 	'use strict';
@@ -39,71 +57,116 @@ define([ 'app',
 		},
 
 		dashboardSearch : function() {
+			var navRoute = "#dashboard/search";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/search");
-			App.mainRegion.show(new MainView());
+
+			App.mainRegion.show(new DashboardSearchView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		dashboardGraphs : function() {
+			var navRoute = "#dashboard/graphs";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/graphs");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new DashboardGraphsView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		dashboardStatistics : function() {
+			var navRoute = "#dashboard/statistics";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/statistics");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new DashboardStatisticsView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		dashboardComponents : function() {
+			var navRoute = "#dashboard/components";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/components");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new DashboardComponentsView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		dashboardScheduler : function() {
+			var navRoute = "#dashboard/scheduler";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/scheduler");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new DashboardSchedulerView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		dashboardProfiles : function() {
+			var navRoute = "#dashboard/profiles";
+			
+			this.setSideNavOptions(defaultDashboardOptions, navRoute);
 			this.setHeaderNavOptions("#dashboard");
-			this.setSideNavOptions(defaultDashboardOptions, "#dashboard/profiles");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new DashboardProfilesView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		settingsAccount : function() {
+			var navRoute = "#settings/account";
+			
+			this.setSideNavOptions(defaultSettingsOptions, navRoute);
 			this.setHeaderNavOptions("#settings");
-			this.setSideNavOptions(defaultSettingsOptions, "#settings/account");
-			App.mainRegion.show(new MainView());
+
+			App.mainRegion.show(new SettingsAccountView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 
 		},
 
 		settingsUsers : function() {
+			var navRoute = "#settings/users";
+			
+			this.setSideNavOptions(defaultSettingsOptions, navRoute);
 			this.setHeaderNavOptions("#settings");
-			this.setSideNavOptions(defaultSettingsOptions, "#settings/users");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new SettingsUsersView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
 		aboutDevopspy : function() {
+			
+			var navRoute = "#about/devopspy";
+			
+			this.setSideNavOptions(defaultAboutOptions, navRoute);
 			this.setHeaderNavOptions("#about");
-			this.setSideNavOptions(defaultAboutOptions, "#about/devopspy");
-			App.mainRegion.show(new MainView());
 
+			App.mainRegion.show(new AboutDevopspyView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 
-		aboutLicence : function() {
+		aboutLicence: function() {
+			
+			var navRoute = "#about/licence";
+			
+			this.setSideNavOptions(defaultAboutOptions, navRoute);
 			this.setHeaderNavOptions("#about");
-			this.setSideNavOptions(defaultAboutOptions, "#about/licence");
-			App.mainRegion.show(new MainView());
+
+			App.mainRegion.show(new AboutLicenceView({
+				model : App.sideNavRegion.currentView.collection.get(navRoute)
+			}));
 		},
 		
 		setSideNavOptions : function(navOptions, navRoute){

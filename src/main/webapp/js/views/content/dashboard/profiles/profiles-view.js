@@ -1,42 +1,79 @@
-define([ 'marionette', 'models/profile', 'collections/profiles', 'views/content/dashboard/profiles/profile-view', 'hbs!templates/content/dashboard/profiles/profiles-view' ],
-	function(Marionette,Profile, Profiles, ProfileView, profilesCollectionViewTemplate) {
+define([ 
+	'marionette',
+	'models/profile',
+	'collections/profiles',
+	'collections/groups',
+	'views/content/dashboard/profiles/profiles-collection-view', 
+	'views/content/dashboard/profiles/profile-modal-view', 
+	'hbs!templates/content/dashboard/profiles/profiles-view' 
+	],
+function(
+	Marionette, 
+	Profile,
+	Profiles,
+	Groups,
+	ProfilesCollectionView,
+	ProfileModalView,
+	profilesViewTemplate
+) {
+	
+	'use strict';
 
-		'use strict';
-	
-		return Backbone.Marionette.CompositeView.extend({
-	
-			template : profilesCollectionViewTemplate,
-	
-			itemView : ProfileView,
-	
-			itemViewContainer : 'ol',
-	
-			id : 'profiles-collection',
-	
-			events : {
-				'click a.btn' : 'createProfile'
-			},
-	
-			ui : {
-				newProfileName : 'input#new-profile-name',
-				newProfileUser : 'input#new-profile-user',
-				newProfilePassword : 'input#new-profile-password',
-				newProfileHost : 'input#new-profile-host',
-				newProfileFilePath : 'input#new-profile-file-path',
-			},
-	
-			createProfile : function(){
-	
-				var newProfile = new Profile({
-					name : this.ui.newProfileName.val(),
-					filePath : this.ui.newProfileFilePath.val(),
-					user : this.ui.newProfileUser.val(),
-					password : this.ui.newProfilePassword.val(),
-					host : this.ui.newProfileHost.val()
-				});
-	
-				newProfile.save();
-				this.collection.fetch();
+	return Backbone.Marionette.Layout.extend({
+		
+		template : profilesViewTemplate,
+		
+		initialize : function(){
+			
+			var that = this;
+			
+			this.profilesCollectionView = new ProfilesCollectionView({
+				collection : this.collection
+			});
+			
+			this.profilesCollectionView.on("itemview:profile:edit", function(childView){
+				that.editProfile(childView.model);
+			});
+		},
+		
+		ui : {
+			newProfileButton : '#create-profile',
+			showHideProfilesButton : '#show-hide-profiles',
+			profilesCollectionRegion : '#profiles-collection'
+
+		},
+		
+		events : {
+			"click #create-profile": 'createProfile',
+			"click #show-hide-profiles" : 'showHideProfiles'
+		},
+		
+		regions : {
+			profilesCollectionRegion : '#profiles-collection',
+			profilesModalRegion : '#profiles-modal-region'
+		},
+		
+		onRender : function(){
+			this.profilesCollectionRegion.show(this.profilesCollectionView);
+		},
+		
+		createProfile : function(){
+			this.editProfile(new Profile());
+		},
+		
+		editProfile : function(model){
+			var profileModalView = new ProfileModalView({model : model, profiles : this.collection});
+			this.profilesModalRegion.show(profileModalView);
+		},
+		
+		showHideProfiles : function(){
+			if (this.ui.profilesCollectionRegion.is(":visible")) {
+				this.ui.showHideProfilesButton.text("Show profiles");
+				this.ui.profilesCollectionRegion.hide(200);
+			} else {
+				this.ui.showHideProfilesButton.text("Hide profiles");
+				this.ui.profilesCollectionRegion.show(200);
 			}
-		});
+		}
 	});
+});

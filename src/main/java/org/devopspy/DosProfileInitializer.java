@@ -18,7 +18,7 @@ public class DosProfileInitializer {
 	@Inject
 	@Named("dosProfileRepository")
 	private DosProfileRepository dosProfileRepository;
-	
+
 	@Inject
 	@Named("dosGrepRepository")
 	private DosGrepRepository dosGrepRepository;
@@ -34,20 +34,24 @@ public class DosProfileInitializer {
 		DosProfileGroup firstGroup = new DosProfileGroup("first group");
 		dosProfileGroupRepository.save(firstGroup);
 
-		DosProfile dosProfile1 = createProfile("profile 1", "/opt/somewhere", "host1", "user", "password");
+		DosProfileGroup secondGroup = new DosProfileGroup("second group");
+		dosProfileGroupRepository.save(secondGroup);
+
+		DosProfile dosProfile1 = createProfile("profile 1", "/opt/somewhere",
+				"host1", "user", "password");
 		dosProfile1.addDosProfileGroup(firstGroup);
+		dosProfile1.addDosProfileGroup(secondGroup);
 		dosProfileRepository.save(dosProfile1);
 
-		DosProfile dosProfile2 = createProfile("profile 2", "/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
+		DosProfile dosProfile2 = createProfile("profile 2",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
 		dosProfileRepository.save(dosProfile2);
 
-		DosProfile dosProfile3 = createProfile("profile 3", "/opt/ops/logs/jboss/serv", "host3", "user", null, "/home/user/.ssh/id_dsa");
+		DosProfile dosProfile3 = createProfile("profile 3",	"/opt/ops/logs/jboss/serv", "host3", "user", null, "/home/user/.ssh/id_dsa");
 		dosProfileRepository.save(dosProfile3);
-		
-		DosProfile dosProfile4 = createProfile("profile 4", "/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
-		dosProfileRepository.save(dosProfile4);              
-		
-		
+
+		DosProfile dosProfile4 = createProfile("profile 4",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
+		dosProfileRepository.save(dosProfile4);
+
 		DosGrep dosGrep = new DosGrep();
 		dosGrep.addDosProfile(dosProfile2);
 		dosGrep.addDosProfile(dosProfile4);
