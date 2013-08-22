@@ -62,7 +62,7 @@ function(Marionette,
 		},
 		
 		editGroup : function(model){
-			var groupModalView = new GroupModalView({model : model, collection : this.profiles});
+			var groupModalView = new GroupModalView({model : model, groups : this.collection, collection : this.profiles});
 			this.groupsModalRegion.show(groupModalView);
 		},
 		

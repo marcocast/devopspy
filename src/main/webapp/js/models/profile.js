@@ -29,6 +29,10 @@ define([ 'models/group', 'collections/groups', 'backbone' ], function(Group, Gro
 			options.url = this.methodUrl(method.toLowerCase());
 
 			Backbone.sync(method, model, options);
+		},
+		
+		hasGroup : function(groupId) {
+			return _.filter(this.get('dosProfileGroups'), function(profileGroup) { return profileGroup.id == groupId; }).length > 0;
 		}
 	});
 });

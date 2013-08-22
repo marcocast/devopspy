@@ -1,7 +1,7 @@
 define([ 'marionette', 'models/group', 'collections/groups',
 		'views/content/dashboard/profiles/profile-option-view',
 		'hbs!templates/content/dashboard/profiles/group-modal-view',
-		'bootstrap', 'to-checklist' ], function(Marionette, Profile, Groups,
+		'bootstrap'], function(Marionette, Profile, Groups,
 		ProfileOptionView, groupModalViewTemplate) {
 
 	'use strict';
@@ -57,8 +57,10 @@ define([ 'marionette', 'models/group', 'collections/groups',
 
 		saveGroup : function() {
 			this.updateModelFromForm();
-			this.updateProfilesFromForm(this.getProfileOptionsFromForm());
 			this.saveModel();
+			this.updateProfilesFromForm(this.getProfileOptionsFromForm());
+			this.options.groups.fetch();
+			this.collection.fetch();
 		},
 
 		updateModelFromForm : function() {
@@ -71,7 +73,7 @@ define([ 'marionette', 'models/group', 'collections/groups',
 			var that = this;
 			this.collection.each(function(profile) {
 				var profileGroups = profile.get('dosProfileGroups');
-				if (_.contains(profileGroups, group)) {
+				if (_.filter(profileGroups, function(group){ return group.id == that.model.id; }).length > 0) {
 					if (!(profileOptionsSelected[profile.id])) {
 						profileGroups = _.without(profileGroups, group); 
 						profile.set('dosProfileGroups', profileGroups);
@@ -102,7 +104,6 @@ define([ 'marionette', 'models/group', 'collections/groups',
 			this.model.save(null, {
 				success : function(model, response, options) {
 					alert("group saved!" + model.id);
-					that.collection.fetch();
 					that.ui.modal.modal('hide');
 				},
 				error : function(model, response, options) {

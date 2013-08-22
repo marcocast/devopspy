@@ -16,6 +16,10 @@ define([ 'marionette', 'models/group', 'models/profile', 'collections/profiles',
 		modelEvents: {
 		    'change' : 'render'
 		},
+		
+		collectionEvents : {
+			change : 'render'
+		},
 
 		events : {
 			'click button.delete-group' : 'deleteGroup',

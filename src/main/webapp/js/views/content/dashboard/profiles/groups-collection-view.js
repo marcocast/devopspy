@@ -11,20 +11,23 @@ define([ 'marionette', 'models/group', 'collections/groups', 'models/profile', '
 	
 			itemViewContainer : 'tbody',
 			
+			collectionEvents : {
+				change : 'render'
+			},
+			
 			initialize : function(options){
 				this.profiles = options.profiles;
 			},
 			
-			buildItemView: function(item, ItemView){
-				
+			buildItemView: function(group, ItemView){
 				var filteredProfiles = this.profiles.filter(function(profile) {
-					  return _.where(profile.get("dosProfileGroups"),{id:1}).length == 1;
-				});
+					  return profile.hasGroup(this.id);
+				}, group);
 				
 				var groupProfiles = new Profiles(filteredProfiles);
 				
 				var view = new ItemView({
-					model: item,
+					model: group,
 					collection: groupProfiles
 				});
 				

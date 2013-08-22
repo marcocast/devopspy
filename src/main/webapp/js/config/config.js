@@ -39,9 +39,6 @@ require.config({
 		},
 		'async' : {
 			exports : 'async'
-		},
-		'to-checklist' : {
-			deps : [ 'jquery' ]
 		}
 	},
 
@@ -73,8 +70,7 @@ require.config({
 		hbs : 'lib/resthub/require-handlebars',
 		moment : 'lib/moment',
 		json2 : 'lib/json2',
-		console : 'lib/resthub/console',
-		'to-checklist' : 'lib/jquery.toChecklist'
+		console : 'lib/resthub/console'
 	}
 });
 
