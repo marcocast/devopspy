@@ -30,6 +30,15 @@ define([ 'marionette', 'models/group', 'collections/groups',
 		itemViewContainer : '#group-modal-profiles-options',
 
 		itemView : ProfileOptionView,
+		
+		buildItemView: function(profile, ItemView){
+			var view = new ItemView({
+				model: profile,
+				currentGroupId : this.model.id
+			});
+			
+			return view;
+		},
 
 		onRender : function() {
 			this.ui.modal.modal();
@@ -119,6 +128,7 @@ define([ 'marionette', 'models/group', 'collections/groups',
 			profile.save(null, {
 				success: function(model, response, options) {
 					  alert("profile saved!" + model.id);
+					  that.collection.fetch();
 				}, 
 				error: function(model, response, options) {
 					  alert("profile " + model.id + " not saved, error " + response.status);

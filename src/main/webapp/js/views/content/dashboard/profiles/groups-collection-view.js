@@ -11,6 +11,10 @@ define([ 'marionette', 'models/group', 'collections/groups', 'models/profile', '
 	
 			itemViewContainer : 'tbody',
 			
+			modelEvents : {
+				change : 'render'
+			},
+			
 			collectionEvents : {
 				change : 'render'
 			},

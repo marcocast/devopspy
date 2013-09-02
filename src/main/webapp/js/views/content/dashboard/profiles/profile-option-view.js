@@ -9,8 +9,15 @@ define([ 'marionette', 'models/profile', 'hbs!templates/content/dashboard/profil
 		
 		template : profileOptionViewTemplate,
 		
+		ui : {
+			'checkbox' : 'input.profile-option'
+		},
+		
 		onRender : function(){
 			this.$el.addClass('checkbox');
+			if (this.model.hasGroup(this.options.currentGroupId)){
+				this.ui.checkbox.prop('checked', true);
+			}
 		},
 		
 		modelEvents: {
