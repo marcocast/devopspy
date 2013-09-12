@@ -3,11 +3,12 @@ package org.devopspy.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +24,7 @@ public class DosGrep {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "grep_id")
 	private Long id;
 
 	@NotNull
@@ -32,10 +34,11 @@ public class DosGrep {
 
 	@NotNull
 	@NotEmpty
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "grep_id")
 	private Set<DosProfile> dosProfiles = new HashSet<DosProfile>();
 
-	public void addDosProfile(DosProfile dosProfile) {		
+	public void addDosProfile(DosProfile dosProfile) {
 		dosProfiles.add(dosProfile);
 	}
 
