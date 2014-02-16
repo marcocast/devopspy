@@ -20,11 +20,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Getter
 @Setter
-public class DosGrep {
+public class DosSearchData {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "grep_id")
+	@Column(name = "SEARCH_DATA_ID")
 	private Long id;
 
 	@NotNull
@@ -35,14 +35,14 @@ public class DosGrep {
 	@NotNull
 	@NotEmpty
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "grep_id")
+	@JoinColumn(name = "SEARCH_DATA_ID")
 	private Set<DosProfile> dosProfiles = new HashSet<DosProfile>();
 
 	public void addDosProfile(DosProfile dosProfile) {
 		dosProfiles.add(dosProfile);
 	}
 
-	public DosGrep() {
+	public DosSearchData() {
 		super();
 	}
 

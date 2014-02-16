@@ -7,7 +7,7 @@ import javax.inject.Named;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosSearchData;
 import org.devopspy.model.DosResult;
 import org.devopspy.service.GrepService;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class GrepServiceController {
 	@RequestMapping(value = "grep", method = RequestMethod.POST)
 	@ResponseBody
 	@Produces(MediaType.TEXT_PLAIN)
-	public List<DosResult> executeGrepSearch(@RequestBody DosGrep devOpspyGrep) {
+	public List<DosResult> executeGrepSearch(@RequestBody DosSearchData devOpspyGrep) {
 		return grepService.runGrep(devOpspyGrep);
 	}
 

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosSearchData;
 import org.devopspy.model.DosResult;
 import org.devopspy.repository.DosResultRepository;
 import org.grep4j.core.result.GrepResult;
@@ -23,7 +23,7 @@ public class ResultService {
 	private DosResultRepository dosResultRepository;
 	
 	
-	public List<DosResult> save(DosGrep dosGrep, GrepResults results){	
+	public List<DosResult> save(DosSearchData dosGrep, GrepResults results){	
 		List<DosResult> dosResults = new ArrayList<DosResult>();
 		for (GrepResult grepResult : results) {			
 			DosResult dosResult = new DosResult();

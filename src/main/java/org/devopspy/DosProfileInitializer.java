@@ -3,9 +3,9 @@ package org.devopspy;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.devopspy.model.DosGrep;
+import org.devopspy.model.DosSearchData;
 import org.devopspy.model.DosProfile;
-import org.devopspy.repository.DosGrepRepository;
+import org.devopspy.repository.DosSearchDataRepository;
 import org.devopspy.repository.DosProfileRepository;
 import org.resthub.common.util.PostInitialize;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class DosProfileInitializer {
 
 	@Inject
 	@Named("dosGrepRepository")
-	private DosGrepRepository dosGrepRepository;
+	private DosSearchDataRepository dosGrepRepository;
 
 
 	@PostInitialize
@@ -41,7 +41,7 @@ public class DosProfileInitializer {
 		DosProfile dosProfile4 = createProfile("profile 4",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
 		dosProfileRepository.save(dosProfile4);
 
-		DosGrep dosGrep = new DosGrep();
+		DosSearchData dosGrep = new DosSearchData();
 		dosGrep.addDosProfile(dosProfile2);
 		dosGrep.addDosProfile(dosProfile4);
 		dosGrep.setExpression("WARN");
