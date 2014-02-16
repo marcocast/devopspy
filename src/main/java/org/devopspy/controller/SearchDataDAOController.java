@@ -15,7 +15,7 @@ public class SearchDataDAOController extends
 		RepositoryBasedRestController<DosSearchData, Long, DosSearchDataRepository> {
 
 	@Inject
-	@Named("searchDataRepository")
+	@Named("dosSearchDataRepository")
 	@Override
 	public void setRepository(DosSearchDataRepository repository) {
 		this.repository = repository;

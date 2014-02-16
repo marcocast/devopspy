@@ -28,15 +28,15 @@ public class GrepServiceController {
 	@RequestMapping(value = "grep", method = RequestMethod.POST)
 	@ResponseBody
 	@Produces(MediaType.TEXT_PLAIN)
-	public List<DosResult> executeGrepSearch(@RequestBody DosSearchData devOpspyGrep) {
-		return grepService.runGrep(devOpspyGrep);
+	public List<DosResult> executeGrep(@RequestBody DosSearchData searchData) {
+		return grepService.runGrep(searchData);
 	}
 
-	@RequestMapping(value = "grep/{grepid}", method = RequestMethod.GET)
+	@RequestMapping(value = "grep/{searchDataId}", method = RequestMethod.GET)
 	@ResponseBody
 	@Produces(MediaType.TEXT_PLAIN)
-	public List<DosResult> executeGrepSearch(@PathVariable Long grepid) {
-		return grepService.runGrep(grepid);
+	public List<DosResult> executeGrep(@PathVariable Long searchDataId) {
+		return grepService.runGrep(searchDataId);
 	}
 
 }

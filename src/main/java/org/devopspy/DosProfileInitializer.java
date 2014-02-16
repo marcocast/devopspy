@@ -18,18 +18,16 @@ public class DosProfileInitializer {
 	private DosProfileRepository dosProfileRepository;
 
 	@Inject
-	@Named("dosGrepRepository")
-	private DosSearchDataRepository dosGrepRepository;
+	@Named("dosSearchDataRepository")
+	private DosSearchDataRepository dosSearchDataRepository;
 
 
 	@PostInitialize
 	@Transactional(readOnly = false)
 	public void init() {
 
-
 		DosProfile dosProfile1 = createProfile("profile 1", "/opt/somewhere",
-				"host1", "user", "password");
-		
+				"host1", "user", "password");		
 		dosProfileRepository.save(dosProfile1);
 
 		DosProfile dosProfile2 = createProfile("profile 2",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
@@ -41,12 +39,12 @@ public class DosProfileInitializer {
 		DosProfile dosProfile4 = createProfile("profile 4",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
 		dosProfileRepository.save(dosProfile4);
 
-		DosSearchData dosGrep = new DosSearchData();
-		dosGrep.addDosProfile(dosProfile2);
-		dosGrep.addDosProfile(dosProfile4);
-		dosGrep.setExpression("WARN");
-		dosGrep.setRegex(false);
-		dosGrepRepository.save(dosGrep);
+		DosSearchData searchData = new DosSearchData();
+		searchData.addDosProfile(dosProfile2);
+		searchData.addDosProfile(dosProfile4);
+		searchData.setExpression("WARN");
+		searchData.setRegex(false);
+		dosSearchDataRepository.save(searchData);
 	}
 
 	private DosProfile createProfile(String name, String filePath, String url, String passsword, String user) {

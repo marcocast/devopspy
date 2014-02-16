@@ -26,8 +26,8 @@ public class GrepService {
 	private ProfileService profileService;
 	
 	@Inject
-	@Named("dosGrepRepository")
-	private DosSearchDataRepository dosGrepRepository;
+	@Named("dosSearchDataRepository")
+	private DosSearchDataRepository dosSearchDataRepository;
 	
 	@Inject
 	@Named("resultService")
@@ -41,7 +41,7 @@ public class GrepService {
 	}
 	
 	public List<DosResult> runGrep(Long grepid){		
-		return runGrep(dosGrepRepository.findOne(grepid));		
+		return runGrep(dosSearchDataRepository.findOne(grepid));		
 	}
 	
 	
