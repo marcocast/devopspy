@@ -2,7 +2,6 @@ define([
 	'marionette',
 	'models/profile',
 	'collections/profiles',
-	'collections/groups',
 	'views/content/dashboard/profiles/profiles-collection-view', 
 	'views/content/dashboard/profiles/profile-modal-view', 
 	'hbs!templates/content/dashboard/profiles/profiles-view' 
@@ -11,7 +10,6 @@ function(
 	Marionette, 
 	Profile,
 	Profiles,
-	Groups,
 	ProfilesCollectionView,
 	ProfileModalView,
 	profilesViewTemplate

@@ -1,4 +1,4 @@
-define([ 'models/group', 'collections/groups', 'backbone' ], function(Group, Groups) {
+define([ 'backbone' ], function() {
 	
 	'use strict';
 
@@ -10,8 +10,7 @@ define([ 'models/group', 'collections/groups', 'backbone' ], function(Group, Gro
 			host : null,
 			user : null,
 			password : null,
-			userAuthPrivateKeyLocation : null,
-			dosProfileGroups : null
+			userAuthPrivateKeyLocation : null
 		},
 
 		urlRoot : 'api/devopspyprofile',
@@ -30,9 +29,5 @@ define([ 'models/group', 'collections/groups', 'backbone' ], function(Group, Gro
 
 			Backbone.sync(method, model, options);
 		},
-		
-		hasGroup : function(groupId) {
-			return _.filter(this.get('dosProfileGroups'), function(profileGroup) { return profileGroup.id == groupId; }).length > 0;
-		}
 	});
 });
