@@ -5,9 +5,7 @@ import javax.inject.Named;
 
 import org.devopspy.model.DosGrep;
 import org.devopspy.model.DosProfile;
-import org.devopspy.model.DosProfileGroup;
 import org.devopspy.repository.DosGrepRepository;
-import org.devopspy.repository.DosProfileGroupRepository;
 import org.devopspy.repository.DosProfileRepository;
 import org.resthub.common.util.PostInitialize;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,24 +21,15 @@ public class DosProfileInitializer {
 	@Named("dosGrepRepository")
 	private DosGrepRepository dosGrepRepository;
 
-	@Inject
-	@Named("dosProfileGroupRepository")
-	private DosProfileGroupRepository dosProfileGroupRepository;
 
 	@PostInitialize
 	@Transactional(readOnly = false)
 	public void init() {
 
-		DosProfileGroup firstGroup = new DosProfileGroup("first group");
-		dosProfileGroupRepository.save(firstGroup);
-
-		DosProfileGroup secondGroup = new DosProfileGroup("second group");
-		dosProfileGroupRepository.save(secondGroup);
 
 		DosProfile dosProfile1 = createProfile("profile 1", "/opt/somewhere",
 				"host1", "user", "password");
-		dosProfile1.addDosProfileGroup(firstGroup);
-		dosProfile1.addDosProfileGroup(secondGroup);
+		
 		dosProfileRepository.save(dosProfile1);
 
 		DosProfile dosProfile2 = createProfile("profile 2",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
