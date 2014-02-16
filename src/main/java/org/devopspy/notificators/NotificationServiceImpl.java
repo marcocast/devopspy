@@ -8,8 +8,7 @@ import org.slf4j.LoggerFactory;
 @Named("notificationService")
 public class NotificationServiceImpl implements NotificationService {
 
-	protected static final Logger logger = LoggerFactory
-			.getLogger(NotificationService.class);
+	protected static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
 
 	@Override
 	public void send(String email, String message) {

@@ -9,12 +9,12 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@ImportResource({"classpath*:resthubContext.xml", "classpath*:applicationContext.xml"})
+@ImportResource({ "classpath*:resthubContext.xml", "classpath*:applicationContext.xml" })
 @Profile("test")
 public class MocksConfiguration {
-    @Bean(name = "notificationService")
-    public NotificationService mockedNotificationService() {
-        return mock(NotificationService.class);
-    }
-    
+	@Bean(name = "notificationService")
+	public NotificationService mockedNotificationService() {
+		return mock(NotificationService.class);
+	}
+
 }

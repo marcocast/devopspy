@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/api/profile")
-public class ProfileDAOController extends
-		RepositoryBasedRestController<DosProfile, Long, DosProfileRepository> {
+public class ProfileDAOController extends RepositoryBasedRestController<DosProfile, Long, DosProfileRepository> {
 
 	@Inject
 	@Named("dosProfileRepository")

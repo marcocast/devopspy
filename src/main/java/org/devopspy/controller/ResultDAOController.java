@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/api/result")
-public class ResultDAOController extends
-		RepositoryBasedRestController<DosResult, Long, DosResultRepository> {
+public class ResultDAOController extends RepositoryBasedRestController<DosResult, Long, DosResultRepository> {
 
 	@Inject
 	@Named("dosResultRepository")

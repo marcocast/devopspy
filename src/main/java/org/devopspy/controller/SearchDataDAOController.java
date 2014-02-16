@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/api/searchdata")
-public class SearchDataDAOController extends
-		RepositoryBasedRestController<DosSearchData, Long, DosSearchDataRepository> {
+public class SearchDataDAOController extends RepositoryBasedRestController<DosSearchData, Long, DosSearchDataRepository> {
 
 	@Inject
 	@Named("dosSearchDataRepository")

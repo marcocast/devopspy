@@ -7,8 +7,8 @@ import javax.inject.Named;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.devopspy.model.DosSearchData;
 import org.devopspy.model.DosResult;
+import org.devopspy.model.DosSearchData;
 import org.devopspy.service.GrepService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

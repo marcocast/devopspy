@@ -11,27 +11,28 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
- * This class replaces the "old" web.xml and is automatically scanned at the application startup
+ * This class replaces the "old" web.xml and is automatically scanned at the
+ * application startup
  */
 public class WebAppInitializer implements WebApplicationInitializer {
 
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        XmlWebApplicationContext appContext = new XmlWebApplicationContext();
-        appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server");
-        String[] locations = { "classpath*:resthubContext.xml", "classpath*:applicationContext.xml" };
-        appContext.setConfigLocations(locations);
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		XmlWebApplicationContext appContext = new XmlWebApplicationContext();
+		appContext.getEnvironment().setActiveProfiles("resthub-jpa", "resthub-web-server");
+		String[] locations = { "classpath*:resthubContext.xml", "classpath*:applicationContext.xml" };
+		appContext.setConfigLocations(locations);
 
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(appContext));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/*");
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(appContext));
+		dispatcher.setLoadOnStartup(1);
+		dispatcher.addMapping("/*");
 
-        servletContext.addListener(new ContextLoaderListener(appContext));
+		servletContext.addListener(new ContextLoaderListener(appContext));
 
-        //Database Console for managing the app's database (TODO : profile)
-        ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("h2console", WebServlet.class);
-        h2Servlet.setLoadOnStartup(2);
-        h2Servlet.addMapping("/console/database/*");
-        
-    }
+		// Database Console for managing the app's database (TODO : profile)
+		ServletRegistration.Dynamic h2Servlet = servletContext.addServlet("h2console", WebServlet.class);
+		h2Servlet.setLoadOnStartup(2);
+		h2Servlet.addMapping("/console/database/*");
+
+	}
 }
