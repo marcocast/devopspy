@@ -34,10 +34,10 @@ public class GrepService {
 	private ResultService resultService;
 	
 	
-	public List<DosResult> runGrep(DosSearchData dosGrep){
-		List<Profile> profiles = profileService.generateProfiles(dosGrep);		
-		GrepResults results = grep(constantExpression(dosGrep.getExpression()), on(profiles));
-		return resultService.save(dosGrep,results);		
+	public List<DosResult> runGrep(DosSearchData searchData){
+		List<Profile> profiles = profileService.generateProfiles(searchData);		
+		GrepResults results = grep(constantExpression(searchData.getExpression()), on(profiles));
+		return resultService.save(searchData,results);		
 	}
 	
 	public List<DosResult> runGrep(Long grepid){		

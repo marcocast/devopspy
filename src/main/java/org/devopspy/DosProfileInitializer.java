@@ -30,7 +30,7 @@ public class DosProfileInitializer {
 				"host1", "user", "password");		
 		dosProfileRepository.save(dosProfile1);
 
-		DosProfile dosProfile2 = createProfile("profile 2",	"/opt/ops/logs/jboss/ramp-all/server.log", "localhost", "", "");
+		DosProfile dosProfile2 = createProfile("profile 2",	"/tmp/debug.log", "localhost", "", "");
 		dosProfileRepository.save(dosProfile2);
 
 		DosProfile dosProfile3 = createProfile("profile 3",	"/opt/ops/logs/jboss/serv", "host3", "user", null, "/home/user/.ssh/id_dsa");
@@ -41,9 +41,8 @@ public class DosProfileInitializer {
 
 		DosSearchData searchData = new DosSearchData();
 		searchData.addDosProfile(dosProfile2);
-		searchData.addDosProfile(dosProfile4);
-		searchData.setExpression("WARN");
-		searchData.setRegex(false);
+		searchData.setExpression("*");
+		searchData.setRegex(true);
 		dosSearchDataRepository.save(searchData);
 	}
 
