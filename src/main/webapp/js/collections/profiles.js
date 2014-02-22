@@ -4,7 +4,7 @@ define([ 'backbone', 'models/profile' ], function(Backbone, Profile) {
 	
 	return Backbone.Collection.extend({
 
-		url : 'api/devopspyprofile',
+		url : 'api/profile',
 
 		model : Profile,
 

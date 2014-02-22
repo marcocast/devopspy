@@ -13,7 +13,7 @@ define([ 'backbone' ], function() {
 			userAuthPrivateKeyLocation : null
 		},
 
-		urlRoot : 'api/devopspyprofile',
+		urlRoot : 'api/profile',
 
 		methodUrl : function (method){
 			if (method == 'create'){
