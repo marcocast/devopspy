@@ -2,6 +2,7 @@ package org.devopspy.service;
 
 import static org.grep4j.core.Grep4j.constantExpression;
 import static org.grep4j.core.Grep4j.grep;
+import static org.grep4j.core.Grep4j.regularExpression;
 import static org.grep4j.core.fluent.Dictionary.on;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import org.devopspy.model.DosSearchData;
 import org.devopspy.repository.DosResultRepository;
 import org.devopspy.repository.DosSearchDataRepository;
 import org.grep4j.core.model.Profile;
+import org.grep4j.core.request.GrepExpression;
 import org.grep4j.core.result.GrepResults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +41,14 @@ public class GrepService {
 
 		List<Profile> profiles = dosToGrep4jConverter.convertToGrep4jProfiles(searchData.getDosProfiles());
 
-		GrepResults results = grep(constantExpression(searchData.getExpression()), on(profiles));
+		GrepExpression grepExpression = null;
+
+		if (searchData.isRegex()) {
+			grepExpression = regularExpression(searchData.getExpression());
+		} else {
+			grepExpression = constantExpression(searchData.getExpression());
+		}
+		GrepResults results = grep(grepExpression, on(profiles));
 
 		return dosResultRepository.save(grep4jToDosConverter.convertToDosResults(results));
 	}
