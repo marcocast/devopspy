@@ -5,6 +5,6 @@ define([ 'marionette', 'hbs!templates/content/content-view' ], function(Marionet
 
 	return Backbone.Marionette.ItemView.extend({
 
-		template : dashboardViewTemplate,
+		template : dashboardViewTemplate
 	});
 });

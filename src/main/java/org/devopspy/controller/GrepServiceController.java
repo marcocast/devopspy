@@ -1,5 +1,7 @@
 package org.devopspy.controller;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,14 +29,14 @@ public class GrepServiceController {
 
 	@RequestMapping(value = "grep", method = RequestMethod.POST)
 	@ResponseBody
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(APPLICATION_JSON)
 	public List<DosResult> executeGrep(@RequestBody DosSearchData searchData) {
 		return grepService.runGrep(searchData);
 	}
 
 	@RequestMapping(value = "grep/{searchDataId}", method = RequestMethod.GET)
 	@ResponseBody
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(APPLICATION_JSON)
 	public List<DosResult> executeGrep(@PathVariable Long searchDataId) {
 		return grepService.runGrep(searchDataId);
 	}

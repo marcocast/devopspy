@@ -30,6 +30,7 @@ public class DosSearchData {
 	@NotNull
 	@NotEmpty
 	private String expression;
+	
 	private boolean isRegex;
 
 	@NotNull
