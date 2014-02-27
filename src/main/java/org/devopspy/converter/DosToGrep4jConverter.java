@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.devopspy.model.DosProfile;
+import org.devopspy.repository.DosProfileRepository;
 import org.grep4j.core.model.Profile;
 import org.grep4j.core.model.ProfileBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,10 +16,14 @@ public class DosToGrep4jConverter {
 
 	private static final String LOCALHOST = "localhost";
 
+	@Autowired
+	private DosProfileRepository dosProfileRepository;
+
 	public List<Profile> convertToGrep4jProfiles(Collection<DosProfile> devOpspyProfiles) {
 		List<Profile> profiles = new ArrayList<Profile>();
 		for (DosProfile devOpspyProfile : devOpspyProfiles) {
-			profiles.add(convertToGrep4jProfile(devOpspyProfile));
+			DosProfile retrievedProfile = dosProfileRepository.findOne(devOpspyProfile.getId());
+			profiles.add(convertToGrep4jProfile(retrievedProfile));
 		}
 		return profiles;
 	}
